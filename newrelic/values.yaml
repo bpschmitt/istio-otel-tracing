@@ -48,6 +48,12 @@ newrelic-infra-operator:
 newrelic-prometheus-agent:
   # newrelic-prometheus-agent.enabled -- Install the [`newrelic-prometheus-agent` chart](https://github.com/newrelic/newrelic-prometheus-configurator/tree/main/charts/newrelic-prometheus-agent)
   enabled: true
+  # -- Set up Prometheus replicas to allow horizontal scalability.
+  # @default -- See `values.yaml`
+  sharding:
+    # -- Sets the number of Prometheus instances running on sharding mode.
+    # @default -- `1`
+    total_shards_count: 2
   config:
     kubernetes:
       # NewRelic provides a list of Dashboards, alerts and entities for several Services. The integrations_filter configuration
